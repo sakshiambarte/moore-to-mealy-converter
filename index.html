@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2563eb"><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css">
+<title>Moore to Mealy Converter</title>
+</head>
+<body>
+<header class="topbar"><div class="brand"><div class="brand-icon">M↔</div><div><div class="eyebrow">THEORY OF COMPUTATION</div><h1>Moore to Mealy Converter</h1></div></div><nav><a href="#input">Input</a><a href="#moore-table">Moore</a><a href="#convert">Convert</a><a href="#mealy-table">Mealy</a></nav></header>
+<main>
+<section class="hero"><div><span class="pill">FINITE AUTOMATA TOOL</span><h2>Moore Machine <span>→</span> Mealy Machine</h2><p>Enter a Moore machine and follow the complete conversion flow from input to tables and diagrams.</p></div><div class="hero-card"><div><b>Moore</b><small>Output on states</small></div><strong>→</strong><div><b>Mealy</b><small>Output on transitions</small></div></div></section>
+
+<div class="flow"><div class="flow-item active"><span>1</span><b>MOORE INPUT</b></div><i>→</i><div class="flow-item"><span>2</span><b>MOORE TABLE</b></div><i>→</i><div class="flow-item"><span>3</span><b>MOORE DIAGRAM</b></div><i>→</i><div class="flow-item convert-flow"><span>4</span><b>CONVERT</b></div><i>→</i><div class="flow-item"><span>5</span><b>MEALY TABLE</b></div><i>→</i><div class="flow-item"><span>6</span><b>MEALY DIAGRAM</b></div></div>
+
+<section id="input" class="card"><div class="section-head"><div><span class="number">01</span><h3>MOORE INPUT</h3><p>Enter states, input symbols, start state, outputs and transitions.</p></div></div>
+<div class="grid two"><label>States<input id="states" value="q0,q1,q2"></label><label>Input Symbols<input id="symbols" value="0,1"></label><label>Start State<input id="start" value="q0"></label><label>State Outputs<input id="outputs" value="q0:0,q1:1,q2:0"></label></div>
+<label class="wide">Transition Rules <span class="hint">One per line: current state, input, next state</span><textarea id="transitions" rows="6">q0,0,q1
+q0,1,q2
+q1,0,q1
+q1,1,q2
+q2,0,q0
+q2,1,q1</textarea></label>
+<div class="actions"><button id="generate" class="primary">Generate Moore Machine →</button><button id="sample" class="secondary">Load Sample</button><button id="reset" class="ghost">Reset</button></div><div id="error" class="error hidden"></div></section>
+
+<section id="moore-table" class="card result hidden"><div class="section-head"><div><span class="number">02</span><h3>MOORE TABLE</h3><p>Each Moore state has its own output.</p></div></div><div id="mooreTable" class="table-wrap"></div></section>
+
+<section id="moore-diagram" class="card result hidden"><div class="section-head"><div><span class="number">03</span><h3>MOORE DIAGRAM</h3><p>State labels are shown as <b>state / output</b>.</p></div></div><div id="mooreDiagram" class="diagram"></div></section>
+
+<section id="convert" class="convert-card result hidden"><div><span class="number">04</span><h3>CONVERT MOORE → MEALY</h3><p>For every transition, attach the output of the destination state.</p></div><button id="convertBtn" class="convert-btn">⚡ CONVERT TO MEALY</button><div id="conversionNote" class="conversion-note"></div></section>
+
+<section id="mealy-table" class="card result hidden"><div class="section-head"><div><span class="number">05</span><h3>MEALY TABLE</h3><p>Each transition now contains <b>next state / output</b>.</p></div><div id="summary" class="summary"></div></div><div id="mealyTable" class="table-wrap"></div></section>
+
+<section id="mealy-diagram" class="card result hidden"><div class="section-head"><div><span class="number">06</span><h3>MEALY DIAGRAM</h3><p>Edge labels are shown as <b>input / output</b>.</p></div></div><div id="mealyDiagram" class="diagram"></div></section>
+
+<section class="card theory"><div class="section-head"><div><h3>Conversion Rule</h3></div></div><div class="theory-grid"><div><h4>Moore</h4><p>Output depends only on the current state.</p></div><div><h4>Mealy</h4><p>Output is placed on transitions and depends on state + input.</p></div><div><h4>Rule</h4><p>If <b>A -- x → B</b> and B has output <b>y</b>, then Mealy transition is <b>A -- x/y → B</b>.</p></div></div></section>
+</main><footer>Moore to Mealy Converter • Theory of Computation • Educational Tool</footer>
+<script src="script.js"></script>
+</body></html>
